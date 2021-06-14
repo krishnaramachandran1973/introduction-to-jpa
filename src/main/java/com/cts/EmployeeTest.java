@@ -20,13 +20,9 @@ public class EmployeeTest {
 
 		transaction.begin();
 
-		employeeService.createEmployee(1L, "Krishna", 10000L);
-		System.out.println(employeeService.findEmployee(1L));
-		
-		Employee emp = employeeService.raiseSalary(1L, 1000L);
-		System.out.println(emp);
+		employeeService.createEmployee("Krishna", 10000l, "Joined as an Architect");
 
-		// employeeService.removeEmployee(1L);
+		employeeService.findAllEmployees().forEach(emp1 -> System.out.println(emp1));
 		transaction.commit();
 	}
 

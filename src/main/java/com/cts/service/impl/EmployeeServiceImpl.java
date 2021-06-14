@@ -1,6 +1,9 @@
 package com.cts.service.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import com.cts.entities.Employee;
 import com.cts.service.EmployeeService;
@@ -13,9 +16,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EntityManager em;
 
 	@Override
-	public Employee createEmployee(Long id, String name, Long salary) {
+	public Employee createEmployee(String name, Long salary, String comments) {
 
-		Employee employee = Employee.builder().id(id).name(name).salary(salary).build();
+		Employee employee = Employee.builder().name(name).salary(salary).comments(comments).build();
 		em.persist(employee);
 		return employee;
 	}
@@ -40,6 +43,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee findEmployee(Long id) {
 		return em.find(Employee.class, id);
+	}
+
+	@Override
+	public List<Employee> findAllEmployees() {
+		TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e", Employee.class);
+		return query.getResultList();
 	}
 
 }
