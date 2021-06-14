@@ -1,5 +1,7 @@
 package com.cts;
 
+import java.util.stream.IntStream;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -20,7 +22,8 @@ public class EmployeeTest {
 
 		transaction.begin();
 
-		employeeService.createEmployee("Krishna", 10000l, "Joined as an Architect");
+		IntStream.range(1, 10)
+				.forEach(i -> employeeService.createEmployee("Krishna " + i, 10000l, "Joined as an Architect"));
 
 		employeeService.findAllEmployees().forEach(emp1 -> System.out.println(emp1));
 		transaction.commit();

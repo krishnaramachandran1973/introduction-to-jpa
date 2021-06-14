@@ -34,13 +34,13 @@
 				name="hibernate.hbm2ddl.auto"
 				value="update" />
 
-			<property
+			<!-- <property
 				name="hibernate.show_sql"
 				value="true" />
 
 			<property
 				name="hibernate.format_sql"
-				value="true" />
+				value="true" /> -->
 		</properties>
 
 	</persistence-unit>

@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,11 +28,17 @@ import lombok.RequiredArgsConstructor;
 @Builder
 
 @Entity
-@Table(name = "EMP")
+@Table(name = "EMPLOYEE")
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	// @TableGenerator(name = "Emp_Gen", table = "ID_GEN", pkColumnName =
+	// "EMP_GEN", valueColumnName = "GEN_VALUE", initialValue = 100,
+	// allocationSize = 200)
+	// @GeneratedValue(strategy = GenerationType.TABLE, generator = "Emp_Gen")
+	// @SequenceGenerator(name = "Seq_Gen", initialValue = 100, allocationSize =
+	// 100)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "EMP_ID")
 	private Long id;
 
